@@ -1,7 +1,6 @@
 import { worker } from '../mocks/server.js';
 import { add, getLastNote, closeCreateNote, update, pinToggle, permanentlyDelete, returnTrashedNotes,
-    returnPinnedNotes, returnUnpinnedNotes, returnNotes, moveToTrash, reorderUpdate, returnFromTrash,
-    searchNotes
+    returnPinnedNotes, returnUnpinnedNotes, returnNotes, moveToTrash, reorderUpdate, returnFromTrash, searchNotes
  } from './Controller/Controller.js';
 
 async function enableMocking() {
@@ -234,9 +233,11 @@ listView.addEventListener('click', function() {
     if (notesUnpinnedView.classList.contains('grid-view')) {
         notesUnpinnedView.classList.remove('grid-view');
     }
+
     if (notesPinnedView.classList.contains('grid-view')) {
         notesPinnedView.classList.remove('grid-view');
     }
+    
     notesUnpinnedView.classList.add('list-view');
     notesPinnedView.classList.add('list-view');
     notesContainer.style.alignItems = 'center';
