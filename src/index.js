@@ -34,12 +34,15 @@ const notesMenu = document.querySelector('.sidebar__notes');
 
 async function saveReorder() {
     let updatedArray = [];
+
     notesPinnedView.childNodes.forEach(child => {
         updatedArray.push(Number(child.id.slice(6,)));
     });
+
     notesUnpinnedView.childNodes.forEach(child => {
         updatedArray.push(Number(child.id.slice(6,)));
-    })
+    });
+
     await reorderUpdate(updatedArray);
 }
 
@@ -68,6 +71,8 @@ function createPinButton(pinButton, noteCard, note) {
         event.stopPropagation();
 
         const isNowPinned = !note.isPinned;
+        const targetView = isNowPinned ? notesPinnedView : notesUnpinnedView;
+
         await pinToggle(note.id, isNowPinned);
         note.isPinned = isNowPinned;
 
@@ -76,7 +81,7 @@ function createPinButton(pinButton, noteCard, note) {
             : '<i class="fa-solid fa-thumbtack"></i>';
 
         noteCard.remove();
-        const targetView = isNowPinned ? notesPinnedView : notesUnpinnedView;
+        
         targetView.appendChild(noteCard);
         addDragAndDropListeners(noteCard, note, targetView);
     });
@@ -98,6 +103,7 @@ function addDragAndDropListeners(noteCard, note, container) {
 
     noteCard.addEventListener("drop", async (event) => {
         event.preventDefault();
+
         const draggedNoteId = event.dataTransfer.getData("text/plain");
         const draggedNote = document.getElementById(`note__${draggedNoteId}`);
 
@@ -247,13 +253,15 @@ gridView.addEventListener('click', function() {
     if (notesUnpinnedView.classList.contains('list-view')) {
         notesUnpinnedView.classList.remove('list-view');
     }
+
     if (notesPinnedView.classList.contains('list-view')) {
         notesPinnedView.classList.remove('list-view');
     }
+
     notesUnpinnedView.classList.add('grid-view');
     notesPinnedView.classList.add('grid-view');
     notesContainer.style.alignItems = 'normal';
-})
+});
 
 text.addEventListener('focus', function(event) {
     title.style.display = 'block';
@@ -293,12 +301,14 @@ closeButton.addEventListener('click', async function() {
     const updatedTitle = dialogTitle.textContent.trim();
     const updatedText = dialogText.textContent.trim();
     const note = await update(id, updatedText, updatedTitle);
+
     renderNote(note);
     dialog.close();
 });
 
 searchInput.addEventListener('search', async function (event) {
     const query = event.target.value.trim();
+
     if (query === '') {
         let notes = await returnNotes();
         await displayNotes(notes);
@@ -310,15 +320,19 @@ searchInput.addEventListener('search', async function (event) {
 
 trashMenu.addEventListener('click', async function() {
     const notes = await returnNotes();
+
     notesView.style.display = 'none';
     trashView.style.display = 'flex';
+
     displayTrash(notes);
 });
 
 notesMenu.addEventListener('click', async function () {
     const notes = await returnNotes();
+
     trashView.style.display = 'none';
     notesView.style.display = 'flex';
+    
     await displayNotes(notes);
 });
 

@@ -8,9 +8,10 @@ export async function addNote(title, text) {
                 'title': title,
                 'text': text
             })
-        })
+        });
+        
         if (!response.ok) {
-            throw new Error("Unable to create note")
+            throw new Error("Unable to create note");
         }
     } catch (error) {
         console.log(error);
@@ -42,7 +43,8 @@ export async function updateNote(note) {
         const response = await fetch(`${SERVER_URL}/notes/${note.id}`, {
             method: 'PATCH',
             body: JSON.stringify(note)
-        })
+        });
+
         if (!response.ok) {
             throw new Error("Unable to update note");
         }
@@ -59,7 +61,8 @@ export async function deleteNote(id) {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
+        });
+
         if (!response.ok) {
             throw new Error("Unable to delete the note");
         }
@@ -75,6 +78,7 @@ export async function bulkUpdate(array) {
             method:'PATCH',
             body: JSON.stringify(array)
         });
+
         if (!response.ok) {
             throw new Error("Unable to update the reordered array");
         }
@@ -87,6 +91,7 @@ export async function bulkUpdate(array) {
 export function addNoteOffline(title, text) {
     const note = { id: Date.now(), title, text, isSynced: false, isDeleted: false, isPinned: false };
     let offlineNotes = JSON.parse(localStorage.getItem('notes')) || [];
+
     offlineNotes.push(note);
     localStorage.setItem('notes', JSON.stringify(offlineNotes));
 }
@@ -97,12 +102,14 @@ export function getNotesOffline() {
 
 export function updateNoteOffline(updatedNote) {
     let offlineNotes = JSON.parse(localStorage.getItem('notes')) || [];
+
     offlineNotes = offlineNotes.map(note => note.id === updatedNote.id ? {...note, ...updatedNote} : note);
     localStorage.setItem('notes', JSON.stringify(offlineNotes));
 }
 
 export function deleteNoteOffline(id) {
     let offlineNotes = JSON.parse(localStorage.getItem('notes')) || [];
+
     offlineNotes = offlineNotes.filter(note => note.id !== id);
     localStorage.setItem('notes', JSON.stringify(offlineNotes));
 }

@@ -18,11 +18,13 @@ export async function add(title, text) {
 
 export async function getLastNote() {
     let notes;
+
     if (navigator.onLine) {
         notes = await getNotes();
     } else {
         notes = await getNotesOffline();
     }
+    
     return { note: notes.at(-1), id: notes.length };
 }
 
@@ -57,6 +59,7 @@ export async function update(id, text, title) {
     } else {
         updateNoteOffline({ id, title, text, isSynced: false });
     }
+
     return await getNoteById(id);
 }
 
@@ -111,6 +114,7 @@ export async function returnFromTrash(id, isDeleted) {
 
 export async function reorderUpdate(reorderArray) {
     let notes;
+
     if (navigator.onLine) {
         notes = await getNotes();
     } else {
@@ -130,6 +134,7 @@ async function syncNotes() {
     if (!navigator.onLine) return;
 
     let notes = JSON.parse(localStorage.getItem('notes')) || [];
+
     for (let note of notes) {
         if (!note.isSynced) {
             await addNote(note.title, note.text);

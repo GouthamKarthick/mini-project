@@ -273,7 +273,6 @@ input:focus {
     flex-direction: column;
     padding: 1em;
     overflow: auto;
-
     &__card {
         border: 1px solid #e0e0e0;
         border-radius: 10px;
@@ -282,18 +281,15 @@ input:focus {
         break-inside: avoid;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     }
-
     &__note-title {
         @include title();
         box-sizing: border-box;
     }
-
     &__note-text {
         @include text();
         margin-bottom: 2rem;
         box-sizing: border-box;
     }
-
     &__restore-btn {
         position: absolute;
         font-size: $text;
@@ -304,7 +300,6 @@ input:focus {
         right: 0rem;
         background-color: transparent;
     }
-
     &__delete-btn {
         position: absolute;
         font-size: $text;
