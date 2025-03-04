@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>KeepNotes</title>
+        <script type="module" src="/src/index.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="https://kit.fontawesome.com/4096cd15a0.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header class="navbar">
+            <span class="navbar__app">
+                <button class="navbar__btn navbar__toggle-icon">
+                    <i style="font-size: 1.5em;" class="fa-solid fa-bars"></i>
+                </button>
+                <span class="navbar__logo">KeepNotes</span>
+            </span>
+            <span class="navbar__view">
+                <input type="search" name="search" class="navbar__search" placeholder="Type to search">
+                <button class="navbar__btn navbar__list-icon" title="List view">
+                    <i style="font-size: 1.5em;" class="fa-solid fa-list"></i>
+                </button>
+                <button class="navbar__btn navbar__grid-icon" title="Grid view">
+                    <i style="font-size: 1.5em;" class="fa-solid fa-th"></i>
+                </button>
+            </span>
+        </header>
+        <section class="main-content">
+            <aside class="sidebar">
+                <div class="sidebar__notes sidebar__menu"><i class="fa-solid fa-note-sticky"></i> Notes</div>
+                <div class="sidebar__trash sidebar__menu"><i class="fa-solid fa-trash-can"></i> Trash</div>
+            </aside>
+            <section class="notes">
+                <div class="notes__create">
+                    <form class="notes__create-note">
+                        <input type="text" name="title" class="notes__title" placeholder="Title">
+                        <textarea name="text" class="notes__text" placeholder="Add a note"></textarea>
+                        <div class="notes__btn-group">
+                            <input type="submit" class="notes__submit" value="Add Note">
+                            <input type="button" class="notes__cancel" value="Cancel">
+                        </div>
+                    </form>
+                </div>
+                <div class="notes__container">
+                    <h2 class="notes__head">Pinned</h2>
+                    <div class="notes__pinned grid-view"></div>
+                    <h2 class="notes__head">Others</h2>
+                    <div class="notes__others grid-view"></div>
+                    <dialog class="notes__dialog">
+                        <div contenteditable="true" class="notes__dialog-title"></div>
+                        <div contenteditable="true" class="notes__dialog-text"></div>
+                        <button class="notes__close-btn">Close</button>
+                    </dialog>
+                </div>
+            </section>
+            <section class="trash">
+                <h2>Trash</h2>
+                <div class="trash__view grid-view">
+
+                </div>
+            </section>
+        </section>
+    </body>
+</html> 
