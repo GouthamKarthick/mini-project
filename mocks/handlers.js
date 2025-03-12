@@ -43,7 +43,6 @@ export const handlers = [
       const updatedNote = { ...notes[noteIndex], ...requestBody };
 
       notes[noteIndex] = updatedNote;
-      console.log(notes);
       return HttpResponse.json({ success: true, updatedNote });
     }
   ),
@@ -57,7 +56,6 @@ export const handlers = [
       }
 
       notes = notes.splice(noteIndex, 1);
-      console.log(notes);
       return HttpResponse.json({ success: true });
     }
   ),

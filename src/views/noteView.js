@@ -100,7 +100,7 @@ export async function displayTrash(notes) {
         await createNote(note, true, elements.TRASH_NOTES);
       }
     } else {
-      elements.TRASH_NOTES.innerHTML = "<p>No trashed notes found</p>";
+      elements.TRASH_NOTES.innerHTML = "<p>Trash is empty</p>";
     }
   } catch (error) {
     console.error("Failed to display trash notes:", error);

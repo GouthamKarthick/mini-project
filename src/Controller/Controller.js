@@ -108,7 +108,6 @@ export async function getNoteById(id) {
         throw new Error(`Note with ID ${id} not found`);
       }
     }
-    console.log(note);
     return note;
   } catch (error) {
     console.error('Failed to get note by ID:', error);

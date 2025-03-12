@@ -42,7 +42,6 @@ export async function createNote(note, isTrash = false, container = elements.NOT
     }
     
     container.appendChild(noteCard);
-    console.log(elements.NOTES_PINNED.children.length, elements.NOTES_UNPINNED.children.length);
     displayHeadAndDivider();
   } catch (error) {
     console.error('Failed to create note element:', error);

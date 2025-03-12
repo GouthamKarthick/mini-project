@@ -73,5 +73,4 @@ function init() {
   }
 }
 
-// Initialize the application
 enableMocking();
