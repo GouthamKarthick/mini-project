@@ -91,7 +91,7 @@ input:focus {
 .notes {
   display: flex;
   position: relative;
-  width: 84.85rem;
+  width: 83.85rem;
   flex-direction: column;
   gap: 1rem;
   overflow: auto;
@@ -160,6 +160,17 @@ input:focus {
 }
 .notes__head {
   width: 37.5rem;
+}
+.notes__head-pinned {
+  display: none;
+}
+.notes__head-others {
+  display: none;
+}
+.notes__divider {
+  width: 98%;
+  border: 1px solid #3f3f3f;
+  display: none;
 }
 .notes__card {
   border: 1px solid #e0e0e0;
@@ -260,6 +271,7 @@ input:focus {
   background-color: #ffffff;
   break-inside: avoid;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
 }
 .trash__note-title {
   font-size: 1.5rem;
@@ -297,6 +309,10 @@ input:focus {
   right: 4rem;
   border: none;
   background-color: transparent;
+}
+
+.q1-editor {
+  font-family: "Montserrat", serif;
 }
 
 /*# sourceMappingURL=style.css.map */

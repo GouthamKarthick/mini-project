@@ -11,7 +11,8 @@
   "author": "prem.kumar@zoomrx.com",
   "license": "ISC",
   "dependencies": {
-    "msw": "^2.7.0"
+    "msw": "^2.7.0",
+    "quill": "^2.0.3"
   },
   "msw": {
     "workerDirectory": [
